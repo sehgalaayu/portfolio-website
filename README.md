@@ -1,12 +1,28 @@
-# React + Vite
+# Aayu Sehgal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the personal portfolio website of Aayu Sehgal, showcasing selected projects, skills, and contact information. The site features modern animations, a custom carousel, and a vibrant, interactive design built with React, Tailwind CSS, and Framer Motion.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the live portfolio here: [https://portfolio-website-taupe-iota.vercel.app/](https://portfolio-website-taupe-iota.vercel.app/)
 
-## Expanding the ESLint configuration
+## Features
+- Animated hero section with floating stars
+- Interactive, scroll-triggered section reveals
+- Modern portfolio carousel with smooth transitions
+- Neon and glassmorphism effects
+- Responsive design for all devices
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+- React
+- Tailwind CSS
+- Framer Motion
+- Vite
+
+## Getting Started
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Run the development server with `npm run dev`
+
+## License
+MIT

@@ -38,7 +38,7 @@ const projects = [
   {
     title: "Portfolio Website",
     devstack: "React, Tailwind, Framer Motion",
-    link: "#",
+    link: "https://portfolio-website-taupe-iota.vercel.app/",
     git: "https://github.com/sehgalaayu/portfolio-website",
     src: proj3,
     type: "frontend",
