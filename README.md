@@ -1,6 +1,6 @@
 # Aayu Sehgal Portfolio
 
-This is the personal portfolio website of Aayu Sehgal, showcasing selected projects, skills, and contact information. The site features modern animations, a custom carousel, and a vibrant, interactive design built with React, Tailwind CSS, and Framer Motion.
+This is the personal portfolio website of Aayu Sehgal, showcasing selected projects, skills, and contact information. The site features modern animations, a custom carousel, and a vibrant, interactive design built with React, Tailwind CSS, and Framer Motion
 
 ## Live Demo
 
