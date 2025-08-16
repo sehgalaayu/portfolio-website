@@ -2,93 +2,141 @@ import React from "react";
 import {
   AiFillGithub,
   AiOutlineTwitter,
-  AiFillFacebook,
   AiFillInstagram,
+  AiFillLinkedin,
 } from "react-icons/ai";
-import { FaTelegramPlane } from "react-icons/fa";
-import Wave from "./Wave";
+import { HiDocumentText } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 export const Footer = () => {
   return (
-    <footer className="py-8 relative overflow-hidden scroll-mt-32" id="contact">
-      <Wave />
-      <div className="max-w-[1200px] mx-auto px-4">
-        <div className="flex items-center justify-between flex-col md:flex-row">
-          <div>
-            <h2 className="md:text-7xl text-4xl font-bold mb-10 text-white/50">
-              Get in <span className="text-gray-400">touch</span>
-            </h2>
+    <footer className="py-24 sm:py-32 relative overflow-hidden scroll-mt-32" id="contact">
+      <div className="container mx-auto px-6">
+        {/* Contact Section */}
+        <div className="text-center mb-16 sm:mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-6xl md:text-7xl font-display mb-6"
+          >
+            Let's <span className="text-gradient-primary text-shadow-glow">Connect</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xl text-white/70 font-light max-w-2xl mx-auto mb-12 font-body"
+          >
+            Ready to bring your ideas to life? Let's discuss your <span className="text-gradient-secondary">next project</span>
+          </motion.p>
+
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-8 justify-center items-center"
+          >
             <a
-              className="md:text-7xl text-4xl font-semibold text-white underline decoration-gray-400 decoration-2
-                                    underline-offset-4 hover:decoration-gray-200 transition duration-300"
               href="mailto:sehgalaayu@gmail.com"
+              className="glass-strong rounded-2xl px-8 py-4 text-white hover:text-purple-300 transition-colors duration-300 group"
             >
-              sehgalaayu@gmail.com
+              <div className="text-sm text-white/60 mb-1">Email</div>
+              <div className="text-lg font-semibold group-hover:scale-105 transition-transform duration-300">
+                sehgalaayu@gmail.com
+              </div>
             </a>
-          </div>
 
-          <div className="text-white/50 mt-12">
-            <div className="mb-8">
-              <p className="text-lg mb-1">Phone</p>
-              <a
-                href="+91 8076904213"
-                className="text-2xl font-semibold underline decoration-gray-400 decoration-2
-                                    underline-offset-4 hover:decoration-gray-400 transition duration-300"
-              >
-                +91 80 76 90 4213
-              </a>
-            </div>
+            <a
+              href="tel:+918076904213"
+              className="glass-strong rounded-2xl px-8 py-4 text-white hover:text-blue-300 transition-colors duration-300 group"
+            >
+              <div className="text-sm text-white/60 mb-1">Phone</div>
+              <div className="text-lg font-semibold group-hover:scale-105 transition-transform duration-300">
+                +91 807 690 4213
+              </div>
+            </a>
 
-            <div className="text-lg mb-8">
-              <p className="font-bold">Office</p>
-              <p>New Delhi</p>
-              <p>India</p>
+            <div className="glass-strong rounded-2xl px-8 py-4 text-white">
+              <div className="text-sm text-white/60 mb-1">Location</div>
+              <div className="text-lg font-semibold">
+                New Delhi, India
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="relative z-10 text-center mt-8 py-12">
-          <h1 className="hidden md:block text-[10rem] md:text-[12rem] lg:text-[15rem] font-bold text-white opacity-10">
-            AAYU SEHGAL
-          </h1>
-
-          <h1 className="md:hidden relative text-9xl md:text-[12rem] lg:text-[15rem] font-bold text-white opacity-10">
-            AAYU
-            <br />
-            SEHGAL
-          </h1>
-        </div>
-
-        <div className="relative mt-12 container flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col">
-          <p className="text-gray-200 caption text-n-4 lg:block">
-            © 2025. All rights reserved.
-          </p>
-
-          <ul className="flex gap-5 flex-wrap">
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="flex space-x-6">
             <a
               href="https://github.com/sehgalaayu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass rounded-2xl p-4 text-white/70 hover:text-white hover:scale-110 transition-all duration-300"
               aria-label="GitHub"
-              className="text-gray-200 flex items-center justify-center w-10 h-10 rounded-full"
             >
-              <AiFillGithub size={30} />
+              <AiFillGithub size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sehgalaayu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass rounded-2xl p-4 text-white/70 hover:text-white hover:scale-110 transition-all duration-300"
+              aria-label="LinkedIn"
+            >
+              <AiFillLinkedin size={24} />
             </a>
             <a
               href="https://x.com/sehgalaayu1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass rounded-2xl p-4 text-white/70 hover:text-white hover:scale-110 transition-all duration-300"
               aria-label="X (Twitter)"
-              className="text-gray-200 flex items-center justify-center w-10 h-10 rounded-full"
             >
-              <AiOutlineTwitter size={30} />
+              <AiOutlineTwitter size={24} />
             </a>
-
             <a
               href="https://www.instagram.com/sehgalaayu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass rounded-2xl p-4 text-white/70 hover:text-white hover:scale-110 transition-all duration-300"
               aria-label="Instagram"
-              className="text-gray-200 flex items-center justify-center w-10 h-10 rounded-full"
             >
-              <AiFillInstagram size={30} />
+              <AiFillInstagram size={24} />
             </a>
-          </ul>
-        </div>
+            <a
+              href="https://drive.google.com/file/d/1uLQanDqNu4EmeotGOe-71nlY1MIK6JVL/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass rounded-2xl p-4 text-white/70 hover:text-white hover:scale-110 transition-all duration-300"
+              aria-label="Resume"
+            >
+              <HiDocumentText size={24} />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center"
+        >
+          <p className="text-white/50 text-sm mb-4 sm:mb-0">
+            © 2025 Aayu Sehgal. All rights reserved.
+          </p>
+          <p className="text-white/50 text-sm">
+            Built with ❤️ using React & Framer Motion
+          </p>
+        </motion.div>
       </div>
     </footer>
   );

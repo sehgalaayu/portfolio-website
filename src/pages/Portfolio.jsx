@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import proj1 from "../assets/images/airbnb.jpg";
 import proj2 from "../assets/images/web-wallet.jpg";
 import proj3 from "../assets/images/portfolio.jpg";
 import proj4 from "../assets/images/main-ui.jpg";
+import proj5 from "../assets/images/product-feedback.jpg";
 import { FaGithub } from "react-icons/fa";
 import { HiOutlineExternalLink } from "react-icons/hi";
 
@@ -11,15 +12,24 @@ const projects = [
   {
     title: "AirBnb Clone",
     desc: "Wanderlust: An Airbnb-Style Listing and Review Platform is a full-stack web application inspired by Airbnb, where users can browse, create, and manage property listings. Each listing features detailed information, images, and user-generated reviews. Built with Node.js, Express, MongoDB, and EJS, the platform supports CRUD operations for listings and reviews, robust error handling, and a clean, responsive user interface.",
-    devstack: "MongoDB, Express, EJS, Node.js, Joi, Passport for AUTH",
-    link: "https://github.com/sehgalaayu/AirBnb-Clone-wanderlust",
+    devstack: "MongoDB, Express, EJS, Node.js, Mapbox, Multer Cloudinary",
+    link: "https://wanderlust-bnb-epe7.onrender.com/",
     git: "https://github.com/sehgalaayu/AirBnb-Clone-wanderlust",
     src: proj1,
     type: "fullstack",
   },
   {
+    title: "Product Feedback App",
+    desc: "A modern, full-stack web application for collecting and managing product feedback with real-time voting, user authentication, and a beautiful dark-themed UI. Features include user registration/login, feedback CRUD operations, voting system with smooth transitions, and responsive design. Built with React, TypeScript, Node.js, and MongoDB.",
+    devstack: "React, TypeScript, Node.js, Express, MongoDB, JWT",
+    link: "https://product-feedback-webapp-1.onrender.com/",
+    git: "https://github.com/sehgalaayu/product-feedback-webapp",
+    src: proj5,
+    type: "fullstack",
+  },
+  {
     title: "Solana Web-Based Wallet",
-    desc: "A modern React + Vite application that generates a new BIP39 mnemonic (seed phrase) and uses it to derive multiple Solana and Ethereum wallets. The app displays the mnemonic in a clean, matrix-style box with a one-click copy feature. Users can add multiple wallets from the same seed, view each wallet’s public key or address, and securely reveal or hide private keys (hidden by default for safety).The interface features a minimal, glassmorphic, dark-themed design for a smooth and secure user experience.",
+    desc: "A modern React + Vite application that generates a new BIP39 mnemonic (seed phrase) and uses it to derive multiple Solana and Ethereum wallets. The app displays the mnemonic in a clean, matrix-style box with a one-click copy feature. Users can add multiple wallets from the same seed, view each wallet's public key or address, and securely reveal or hide private keys (hidden by default for safety).The interface features a minimal, glassmorphic, dark-themed design for a smooth and secure user experience.",
     devstack: "React, bip39, ethers, @solana/web3.js, ed25519-hd-key",
     link: "https://web-based-wallet-32bt.vercel.app/",
     git: "https://github.com/sehgalaayu/web-based-wallet",
@@ -46,103 +56,97 @@ const projects = [
 ];
 
 export const Portfolio = () => {
-  const [active, setActive] = useState(0);
-  const total = projects.length;
-
-  const next = () => setActive((prev) => (prev + 1) % total);
-  const prev = () => setActive((prev) => (prev - 1 + total) % total);
-
-  // Card width + gap
-  const CARD_WIDTH = 480;
-  const GAP = 32;
-  // Show 3 cards at a time, center the active
-  const VISIBLE_COUNT = 3;
-  const containerWidth = CARD_WIDTH * VISIBLE_COUNT + GAP * (VISIBLE_COUNT - 1);
-  // Center the active card
-  const containerX = -1 * (active * (CARD_WIDTH + GAP) - ((containerWidth - CARD_WIDTH) / 2));
-
   return (
-    <div className="text-white py-24 md:py-64 scroll-mt-32" id="portfolio">
-      <div className="container mx-auto px-4 flex flex-col items-center">
-        <h2 className="text-6xl font-bold text-center mb-16">
-          Selected <span className="text-emerald-300">Projects</span>
-        </h2>
-        <div className="relative w-full flex items-center justify-center min-h-[560px] pt-32">
-          {/* Prev Button */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-pink-500/60 text-white rounded-full p-3 shadow-lg transition-all"
-            aria-label="Previous Project"
+    <div className="py-24 sm:py-32 md:py-40 scroll-mt-32" id="portfolio">
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-16 sm:mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-6xl md:text-7xl font-display mb-6"
           >
-            &#8592;
-          </button>
-          {/* Next Button */}
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-pink-500/60 text-white rounded-full p-3 shadow-lg transition-all"
-            aria-label="Next Project"
+            Selected <span className="text-gradient-primary text-shadow-glow">Projects</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xl text-white/70 font-light max-w-2xl mx-auto font-body"
           >
-            &#8594;
-          </button>
-          <div style={{ width: containerWidth }}>
+            A showcase of my latest work, featuring <span className="text-gradient-secondary">modern web applications</span> and innovative solutions
+          </motion.p>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, idx) => (
             <motion.div
-              className="flex gap-8"
-              initial={false}
-              animate={{ x: containerX }}
-              transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
-              style={{ minWidth: (CARD_WIDTH + GAP) * total }}
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="group cursor-pointer"
             >
-              {projects.map((project, idx) => {
-                const isActive = idx === active;
-                const isSide = Math.abs(idx - active) === 1 || Math.abs(idx - active) === total - 1;
-                return (
-                  <motion.div
-                    key={idx}
-                    className={`w-[480px] max-w-full cursor-pointer group transition-all duration-300 ${isActive ? "z-10" : "z-0 opacity-60 scale-95"}`}
-                    animate={isActive ? { scale: 1.08, y: -2, opacity: 1 } : isSide ? { scale: 0.95, y: 0, opacity: 0.7 } : { scale: 0.9, y: 0, opacity: 0.3 }}
-                    transition={{ type: "spring", stiffness: 80, damping: 18 }}
-                    whileHover={isActive ? { scale: 1.13, y: -4, boxShadow: "0 12px 64px #ff5f8fcc, 0 0 0 #fff0" } : {}}
-                  >
-                    <div className="bg-white/10 rounded-2xl overflow-hidden shadow-2xl border-2 border-pink-400/30 backdrop-blur-xl transition-all duration-300">
-                      <img
-                        src={project.src}
-                        alt={project.title}
-                        className="w-full h-64 object-cover rounded-t-2xl"
-                      />
-                      <div className="p-6">
-                        <h3 className="text-3xl font-bold mb-2 text-pink-400 uppercase tracking-widest">
-                          {project.title}
-                        </h3>
-                        <p className="text-white/80 mb-4 min-h-[60px]">{project.desc}</p>
-                        <p className="text-emerald-300 font-medium mb-2">
-                          Stack: {project.devstack}
-                        </p>
-                        <p className="text-emerald-400/60 font-medium mb-4 capitalize">
-                          Type: {project.type}
-                        </p>
-                        <div className="flex justify-start items-center space-x-4">
-                          <a
-                            href={project.link}
-                            className="text-emerald-400 hover:text-blue-300 transition-colors"
-                            target="_blank" rel="noopener noreferrer"
-                          >
-                            <HiOutlineExternalLink />
-                          </a>
-                          <a
-                            href={project.git}
-                            className="text-gray-400 hover:text-gray-300 transition-colors"
-                            target="_blank" rel="noopener noreferrer"
-                          >
-                            <FaGithub />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-300 group-hover:border-white/20 h-full">
+                {/* Project Image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.src}
+                    alt={project.title}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-white">
+                    {project.title}
+                  </h3>
+                  
+                  {project.desc && (
+                    <p className="text-white/70 mb-4 leading-relaxed text-sm">
+                      {project.desc}
+                    </p>
+                  )}
+
+                  <div className="space-y-2 mb-4">
+                    <p className="text-purple-400 font-medium text-sm">
+                      <span className="text-white/50">Stack:</span> {project.devstack}
+                    </p>
+                    <p className="text-blue-400 font-medium text-sm capitalize">
+                      <span className="text-white/50">Type:</span> {project.type}
+                    </p>
+                  </div>
+
+                  {/* Project Links */}
+                  <div className="flex items-center space-x-4">
+                    <a
+                      href={project.link}
+                      className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors duration-300"
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <HiOutlineExternalLink className="w-4 h-4" />
+                      <span className="text-sm font-medium">Live Demo</span>
+                    </a>
+                    <a
+                      href={project.git}
+                      className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors duration-300"
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      <span className="text-sm font-medium">Code</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
